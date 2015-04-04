@@ -1,0 +1,9 @@
+<% if (post.link){ %>
+	<%= post.title %>
+<% } else if (post.title){ %>
+  <% if (index){ %>
+	<%= post.title %>
+  <% } else { %>
+	<%= post.title %>
+  <% } %>
+<% } %>

@@ -1,0 +1,44 @@
+<% if (!index){ %>
+
+<!-- Post Content -->
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<%- post.content %>
+			</div>
+		</div>
+	</div>
+</article>
+
+<hr>
+
+<% } else { %>
+<div class="post-preview" itemscope itemprop="blogPost">
+	<a href="<%- url_for(post.path) %>" itemprop="url">
+		<h2 class="post-title" itemprop="name">
+			<%- partial('post/title', {class_name: 'article-title'}) %>
+		</h2>
+		
+		<h3 class="post-subtitle">
+		   <%- strip_html(post.excerpt) %>
+		</h3>
+	</a>
+	<% if (!index){ %>
+	<%- post.content %>
+	<% } %>
+	<p class="post-meta">
+		Posted by <a href="#">Start Bootstrap</a> 
+		on <%- partial('post/date', {class_name: 'article-date', date_format: null}) %><%- partial('post/category') %></p>
+</div>
+<hr>
+
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+
+<% } %>
